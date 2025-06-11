@@ -21,6 +21,8 @@ import { setDisappearingLoadingMessage } from './actions/base';
 
 import createDropboxSyncBackendClient from './sync_backend_clients/dropbox_sync_backend_client';
 import createGoogleDriveSyncBackendClient from './sync_backend_clients/google_drive_sync_backend_client';
+import createLocalSyncBackendClient from './sync_backend_clients/local_sync_backend_client';
+
 
 import './base.css';
 
@@ -71,6 +73,9 @@ export default class App extends PureComponent {
             isAuthenticated: true,
             client,
           });
+          break;
+      case 'Local':
+          client = createLocalSyncBackendClient();
           break;
         default:
       }
